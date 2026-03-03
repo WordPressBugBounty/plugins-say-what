@@ -146,17 +146,17 @@ class Admin {
 				)
 			);
 		}
-		$table_name = $table_prefix . 'say_what_strings';
-		$id = isset( $_GET['id'] ) ?
+		$table_name     = $table_prefix . 'say_what_strings';
+		$replacement_id = isset( $_GET['id'] ) ?
 			sanitize_key( wp_unslash( $_GET['id'] ) ) :
 			null;
-		if ( ! empty( $id ) ) {
+		if ( ! empty( $replacement_id ) ) {
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 			$replacement = $wpdb->get_row(
 				$wpdb->prepare(
 					'SELECT * FROM %i WHERE string_id = %d',
 					$table_name,
-					$id
+					$replacement_id
 				)
 			);
 		}
@@ -175,16 +175,16 @@ class Admin {
 	 */
 	public function admin_delete_confirmed(): void {
 		global $wpdb, $table_prefix;
-		$id = isset( $_GET['id'] ) ?
+		$replacement_id = isset( $_GET['id'] ) ?
 			sanitize_key( wp_unslash( $_GET['id'] ) ) :
 			null;
-		if ( ! isset ($_GET['nonce'] ) ||
-		     ! wp_verify_nonce( sanitize_key( wp_unslash( $_GET['nonce'] ) ), 'swdelete' ) ||
-			empty( $id )
+		if ( ! isset( $_GET['nonce'] ) ||
+			! wp_verify_nonce( sanitize_key( wp_unslash( $_GET['nonce'] ) ), 'swdelete' ) ||
+			empty( $replacement_id )
 		) {
 			wp_die(
 				esc_html(
-					__( 'Did you really mean to do that? Please go back and try again.', 'say-what')
+					__( 'Did you really mean to do that? Please go back and try again.', 'say-what' )
 				)
 			);
 		}
@@ -193,7 +193,7 @@ class Admin {
 			$wpdb->prepare(
 				'DELETE FROM %i WHERE string_id = %d',
 				$table_prefix . 'say_what_strings',
-				$id
+				$replacement_id
 			)
 		);
 		$this->settings->invalidate_caches();
@@ -208,17 +208,17 @@ class Admin {
 		global $wpdb, $table_prefix;
 		$replacement = false;
 		// phpcs:disable WordPress.Security.NonceVerification.Recommended
-		$id = isset( $_GET['id'] ) ?
+		$replacement_id = isset( $_GET['id'] ) ?
 			sanitize_key( wp_unslash( $_GET['id'] ) ) :
 			null;
 		// phpcs:enable
-		if ( ! is_null( $id ) ) {
+		if ( ! is_null( $replacement_id ) ) {
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 			$replacement = $wpdb->get_row(
 				$wpdb->prepare(
 					'SELECT * FROM %i WHERE string_id = %d',
 					$table_prefix . 'say_what_strings',
-					$id
+					$replacement_id
 				)
 			);
 		}
@@ -251,7 +251,7 @@ class Admin {
 	 */
 	private function save(): void {
 		global $wpdb, $table_prefix;
-		$nonce = isset( $_POST['nonce'] )  ?
+		$nonce = isset( $_POST['nonce'] ) ?
 			sanitize_key( wp_unslash( $_POST['nonce'] ) ) :
 			'';
 		if ( ! wp_verify_nonce( $nonce, 'swaddedit' ) ) {

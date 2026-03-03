@@ -4,15 +4,16 @@
  * Plugin Name: Say What?
  * Plugin URI: https://github.com/leewillis77/say-what
  * Description: An easy-to-use plugin that allows you to alter strings on your site without editing WordPress core, or plugin code
- * Version: 2.2.5
+ * Version: 2.2.6
  * Author: Ademti Software
  * Author URI: https://plugins.leewillis.co.uk/
  * Text Domain: say-what
+ * Domain Path: /languages
  * License: GPLv2
  */
 
 /**
- * Copyright (c) 2016-2024 Ademti Software Ltd. All rights reserved.
+ * Copyright (c) 2016-2026 Ademti Software Ltd. All rights reserved.
  *
  * Released under the GPL license
  * http://www.opensource.org/licenses/gpl-license.php
@@ -39,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-const SAY_WHAT_VERSION = '2.2.5';
+const SAY_WHAT_VERSION = '2.2.6';
 
 const SAY_WHAT_DB_VERSION = 3;
 

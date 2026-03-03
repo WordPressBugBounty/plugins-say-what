@@ -1,11 +1,11 @@
-=== Say what? ===
+=== Say What? ===
 Contributors: leewillis77
 Donate link: http://plugins.leewillis.co.uk/downloads/say-what-pro?utm_source=wordpress&utm_medium=www&utm_campaign=say-what
 Tags: string, change, translation
 Requires at least: 6.2
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 2.2.5
+Stable tag: 2.2.6
 License: GPLv2
 An easy-to-use plugin that allows you to change translatable strings from plugins / themes and WordPress core without editing code. 
 
@@ -64,6 +64,9 @@ Not in the free plugin, however this is available in the [Pro version of the plu
 2. Adding/editing a replacement
 
 == Changelog ==
+
+= 2.2.6 =
+* Dependency bumps & WordPress compat improvements
 
 = 2.2.5 =
 * General tidy-ups and maintenance
